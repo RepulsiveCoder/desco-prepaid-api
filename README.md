@@ -167,7 +167,7 @@ Every call made via `$desco->callApi()` returns a standardized PHP object:
     "readingTime": "2026-11-10 00:00:00"
 }
 
-// consumerMessages will be omitted as configured in the Main Class; // $unsets = ['consumerMessages', 'accountId']
+// The field consumerMessages will be omitted by default as configured in the Main Class; // $unsets = ['consumerMessages', 'accountId']
 ```
 
 #### 3. Customer Info Endpoint
@@ -187,7 +187,7 @@ Every call made via `$desco->callApi()` returns a standardized PHP object:
     "registerDate": "2020-08-11 00:00:00",
     "installationDate": "2020-08-11 00:00:00"
 }
-// accountId will be omitted as configured in the Main Class; // $unsets = ['consumerMessages', 'accountId']
+// The field accountId will be omitted by default as configured in the Main Class; // $unsets = ['consumerMessages', 'accountId']
 ```
 
 
