@@ -27,12 +27,15 @@ A lightweight PHP wrapper to authenticate with the new DESCO (Dhaka Electric Sup
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com
+   git clone https://github.com/RepulsiveCoder/desco-prepaid-api
    cd desco-prepaid-php
+
+   cd example
+   php getBalance.php
    ```
 
 2. **Configure your credentials:**
-   Open `config.php` and add your DESCO Prepaid portal username and your **Base64-encoded** password.
+   Open `config.example.php`, rename it to `config.php` and add your DESCO Prepaid portal username and your **Base64-encoded** password.
 
    ```php
    <?php
@@ -41,8 +44,9 @@ A lightweight PHP wrapper to authenticate with the new DESCO (Dhaka Electric Sup
    $password = 'eW91cl9wYXNzd29yZA=='; // Your Base64-encoded password
    ```
 
-   > **Tip:** You can generate your Base64-encoded password via CLI using:
-   > `echo -n 'your_password' | base64`
+   > **Tip:** You can generate your Base64-encoded password via CLI using:  
+   > `echo -n 'your_password' | base64`  
+   > `[Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes('your_password'))`  // powershell
 
 ## Usage Example
 
@@ -138,8 +142,9 @@ Every call made via `$desco->callApi()` returns a standardized PHP object:
 ```
 
 #### 2. Balance Endpoint
-// $desco->urls->balance, need to replace $1 with accountId // e.g. $endpoint = str_replace('$1', $account->accountId, $desco->urls->balance);
 ```json
+// $desco->urls->balance (/accounts/$1/balance), need to replace $1 with accountId
+// e.g. $endpoint = str_replace('$1', $account->accountId, $desco->urls->balance);
 {
     "accountNo": "xxxxxxxx",
     "meterNo": "xxxxxxxxxxxx",
@@ -167,12 +172,14 @@ Every call made via `$desco->callApi()` returns a standardized PHP object:
     "readingTime": "2026-11-10 00:00:00"
 }
 
-// The field consumerMessages will be omitted by default as configured in the Main Class; // $unsets = ['consumerMessages', 'accountId']
+// The field consumerMessages will be omitted by default as configured in the Main Class; 
+// $unsets = ['consumerMessages', 'accountId']
 ```
 
 #### 3. Customer Info Endpoint
-// $desco->urls->info, need to replace $1 with accountId // e.g. $endpoint = str_replace('$1', $account->accountId, $desco->urls->info);
 ```json
+// $desco->urls->info (/accounts/$1/summary), need to replace $1 with accountId
+// e.g. $endpoint = str_replace('$1', $account->accountId, $desco->urls->info);
 {
     "accountId": xxxxx,
     "accountNo": "xxxxxxxx",
@@ -187,7 +194,8 @@ Every call made via `$desco->callApi()` returns a standardized PHP object:
     "registerDate": "2020-08-11 00:00:00",
     "installationDate": "2020-08-11 00:00:00"
 }
-// The field accountId will be omitted by default as configured in the Main Class; // $unsets = ['consumerMessages', 'accountId']
+// The field accountId will be omitted by default as configured in the Main Class; 
+// $unsets = ['consumerMessages', 'accountId']
 ```
 
 
