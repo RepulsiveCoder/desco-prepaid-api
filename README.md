@@ -11,14 +11,15 @@ A lightweight PHP wrapper to authenticate with the new DESCO (Dhaka Electric Sup
 
 ## Requirements
 
-* PHP 7.4 or higher
+* PHP 8.2 or higher
 * `JSON` extension enabled (`ext-json`)
 
 ## Project Structure
 
 ```text
 ├── phpDESCOPrepaid.php      # Core API wrapper class
-├── config.php               # Credentials configuration
+├── config.example.php       # Credentials configuration Example
+├── README.md                # Readme
 └── example/
     └── getBalance.php       # Usage example script
 ```
